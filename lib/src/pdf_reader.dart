@@ -11,16 +11,23 @@ class PDFReader extends StatefulWidget {
   final bool _isLocal;
   final bool darkMod;
   final double initialScale;
+  final double minScale;
+  final double maxScale;
+  final int zoomSteps;
   final Offset initialOffset;
   final bool showPicker;
   final bool showIndicator;
   final bool showNavigation;
+
   final Function(double)? onZoomChanged;
   final Function(Offset)? onOffsetChanged;
 
   PDFReader.fromNetwork(String url,
       {this.darkMod = false,
       this.initialScale = 1,
+      this.minScale = 1.0,
+      this.maxScale = 6.0,
+      this.zoomSteps = 3,
       this.initialOffset = const Offset(0, 0),
       this.showPicker = true,
       this.showIndicator = true,
@@ -33,6 +40,9 @@ class PDFReader extends StatefulWidget {
   PDFReader.from(String path,
       {this.darkMod = false,
       this.initialScale = 1,
+      this.minScale = 1.0,
+      this.maxScale = 6.0,
+      this.zoomSteps = 3,
       this.initialOffset = const Offset(0, 0),
       this.showPicker = true,
       this.showIndicator = true,
@@ -71,7 +81,7 @@ class _PDFReaderNetworkState extends State<PDFReader> {
     });
     super.initState();
   }
-  
+
   void _loadPDFForOldAPI() {
     Future.delayed(Duration.zero, () {
       _oldPDF
@@ -114,9 +124,11 @@ class _PDFReaderNetworkState extends State<PDFReader> {
             initialScale: widget.initialScale,
             initialOffset: widget.initialOffset,
             showPicker: widget.showPicker,
+            minScale: widget.minScale,
+            maxScale: widget.maxScale,
+            zoomSteps: widget.zoomSteps,
             showIndicator: widget.showIndicator,
             showNavigation: widget.showNavigation,
-            maxScale: Platform.isAndroid ? 4.5 : 7.0,
             onOffsetChanged: widget.onOffsetChanged,
             onZoomChanged: widget.onZoomChanged,
             document: document!,
@@ -182,11 +194,13 @@ class _PDFReaderState extends State<PDFReader> {
         : PDFViewer(
             darkMod: widget.darkMod,
             initialScale: widget.initialScale,
+            minScale: widget.minScale,
+            maxScale: widget.maxScale,
+            zoomSteps: widget.zoomSteps,
             initialOffset: widget.initialOffset,
             showPicker: widget.showPicker,
             showIndicator: widget.showIndicator,
             showNavigation: widget.showNavigation,
-            maxScale: Platform.isAndroid ? 4.5 : 7.0,
             onOffsetChanged: widget.onOffsetChanged,
             onZoomChanged: widget.onZoomChanged,
             document: document!,
