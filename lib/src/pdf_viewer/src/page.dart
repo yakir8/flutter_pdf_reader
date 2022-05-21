@@ -63,8 +63,15 @@ class _PDFPageState extends State<PDFPage> {
         minScale: widget.minScale,
         panLimit: widget.panLimit,
         maxScale: widget.maxScale,
-        child: widget.darkMod ? Image(image: provider,color: Colors.grey[350],
-          colorBlendMode: BlendMode.difference,) : Image(image: provider),),
+        child: widget.darkMod ?
+        Container(
+          padding: EdgeInsets.only(right: 25),
+          child: Image(image: provider, color: Colors.grey[350],
+            colorBlendMode: BlendMode.difference,),) :
+        Container(
+          padding: EdgeInsets.only(right: 25),
+          child: Image(image: provider),
+        ),),
     );
   }
   
