@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter/painting.dart' show Offset;
 
 import 'package:flutter_pdf_reader/src/advanced_network_image/src/utils.dart';
 

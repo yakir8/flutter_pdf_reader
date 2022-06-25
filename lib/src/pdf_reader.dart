@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_pdf_reader/src/full_pdf_viewer/full_pdf_viewer_plugin.dart';
@@ -57,6 +58,7 @@ class PDFReader extends StatefulWidget {
       _isLocal ? _PDFReaderState() : _PDFReaderNetworkState();
 
   Future<bool> _isOldAPI() async {
+    if (kIsWeb) return false;
     if (Platform.isIOS) return false;
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;

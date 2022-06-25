@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'tooltip.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:flutter_pdf_reader/src/pdf_viewer/flutter_plugin_pdf_viewer.dart';
 

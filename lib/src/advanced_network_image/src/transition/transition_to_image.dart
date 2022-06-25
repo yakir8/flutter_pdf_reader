@@ -246,11 +246,11 @@ class _TransitionToImageState extends State<TransitionToImage>
       ..addListener(() => setState(() {}));
     if (widget.transitionType == TransitionType.fade) {
       _fadeTween = widget.tween != null
-          ? Tween(begin: widget.tween!.begin, end: widget.tween!.end)
+          ? Tween(begin: widget.tween!.begin as double, end: widget.tween!.end as double)
           : Tween(begin: 0.0, end: 1.0);
     } else if (widget.transitionType == TransitionType.slide) {
       _slideTween = widget.tween != null
-          ? Tween<Offset>(begin: widget.tween!.begin, end: widget.tween!.begin)
+          ? Tween<Offset>(begin: widget.tween!.begin as Offset, end: widget.tween!.begin as Offset)
           : Tween<Offset>(begin: Offset(0.0, -1.0), end: Offset.zero);
     }
     _animation = CurvedAnimation(parent: _controller, curve: widget.curve);

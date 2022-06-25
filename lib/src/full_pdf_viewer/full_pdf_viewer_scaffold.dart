@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdf_reader/src/full_pdf_viewer/full_pdf_viewer_plugin.dart';
 

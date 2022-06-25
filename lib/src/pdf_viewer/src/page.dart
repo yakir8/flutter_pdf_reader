@@ -1,9 +1,6 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_pdf_reader/src/advanced_network_image/src/zoomable/zoomable_widget.dart';
 
 class PDFPage extends StatefulWidget {
